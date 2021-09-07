@@ -39,19 +39,18 @@ def cargar_imagenes(path):
 
 ##--------------------------------------
 images = []
-path="Imagenes/Images_resized_64x64/"
+# ubicación de las imágenes
+path=""
 #path="UTKFace/"
 
 Imagenes= cargar_imagenes(path)
 
 
-##---------- Local Binary Pattern ----------##
+##---------- HOG ----------##
 
 
 from skimage.feature import  hog
 import pandas as pd
-radius=1 #8
-P=8#16 #vecindades
 Hog = []
 M = Imagenes[0].shape[0]//2
 N = Imagenes[0].shape[1]//2
@@ -63,7 +62,7 @@ for img in Imagenes:
     sub_img = [img[x:x+M,y:y+N] for x in range(0,img.shape[0],M) 
                               for y in range(0,img.shape[1],N)]
     Hog_aux=[]
-    # para cada sub imagen, calcular LBP
+    # para cada sub imagen, calcular HOG
     for img in sub_img:
         hog_vector, hog_img= hog(img, orientations=10, pixels_per_cell=(8, 8),
         cells_per_block=(1,1), block_norm='L1',visualize=True,feature_vector=True,multichannel=None)
@@ -92,7 +91,7 @@ print(nan_rows)
 # # datos= datos.dropna(how='any')
 
 # # # Guardar características y etiquetas en un csv
-datos.to_csv('HOG_patches.csv',index=False)
+datos.to_csv('HOG.csv',index=False)
 
 # imprimir última imagen
 

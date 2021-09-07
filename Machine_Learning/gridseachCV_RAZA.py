@@ -20,7 +20,7 @@ import pandas as pd
 import numpy as np     
                                         
 #----DATA--------#
-data= pd.read_csv("utk_dataset/caracteristicas/LBP_utk_32x32_conc.csv",header=0)
+data= pd.read_csv(" ",header=0)
 
 #-----------------------------------------------------#
 # ---------------- Preprocesamiento -----------------#
@@ -41,33 +41,6 @@ print(raza.value_counts())
 #
 
 
-  # Categorizar edades       
-for i in range(len(data)):
-    if ((data.loc[i,'edad'] >=0) & (data.loc[i,'edad'] <=10)):
-        data.loc[i,'edad']=0
-    elif ((data.loc[i,'edad'] >=11) & (data.loc[i,'edad'] <=20)):
-        data.loc[i,'edad']=1
-    elif ((data.loc[i,'edad'] >=21) & (data.loc[i,'edad'] <=35)):
-        data.loc[i,'edad']=2
-    elif ((data.loc[i,'edad'] >=36) & (data.loc[i,'edad'] <=50)):
-        data.loc[i,'edad']=3 
-    elif ((data.loc[i,'edad'] >=51) & (data.loc[i,'edad'] <=65)):
-          data.loc[i,'edad']=4
-    else:
-        data.loc[i,'edad']=5
-
-
-data.to_csv('etiquetas_utk_balanced.csv',index=False)
-# data_balanced=pd.concat([data,c], axis=0, ignore_index=True)
-# data_balanced =data_balanced.reset_index(drop=True)
-# #index_ed=len(data)-1
-
-# # Renombrar las ultimas 3 columnas como corresponde (features)
-
-# data_balanced.rename(columns = {len(data.columns)-3:'edad'}, inplace = True) 
-# data_balanced.rename(columns = {len(data.columns)-2:'genero'}, inplace = True) 
-# data_balanced.rename(columns = {len(data.columns)-1:'raza'}, inplace = True) 
-# data_balanced = data_balanced.reset_index(drop=True)
 
 print("Terminado. Ahora las clases están más balanceadas.")
 

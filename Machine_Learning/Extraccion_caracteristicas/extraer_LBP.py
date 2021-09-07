@@ -49,19 +49,12 @@ def cargar_imagenes(path):
 ##--------------------------------------
 images = []
 
-# --- Comentar o descomentar según el dataset
-path="fair_face/fair_face_96x96/"
-#path1="imagenes_resized_64x64/female/"
-#path2= "imagenes_resized_64x64/male/"
+
+path=""
 #path="UTKFace/"
 
-# Unir ambos generos, se hace así para conservar el orden de las etiquetas
 
 print("Importando imágenes...")
-
-#Imagenes1= cargar_imagenes(path1) # female
-#Imagenes2 = cargar_imagenes(path2) # male
-#Imagenes = Imagenes1+Imagenes2
 Imagenes= cargar_imagenes(path)
 
 print("Calculando LBP...")
@@ -77,7 +70,7 @@ P=8#16 #vecindades
 Lbp = []
 M = Imagenes[0].shape[0]//4
 N = Imagenes[0].shape[1]//4
-#y=1
+
 n=1
 for img in Imagenes:
     print("procesando imagen n°:",n)
@@ -111,7 +104,7 @@ for img in Imagenes:
 #------------------------------------
     
 # #Obtener etiquetas
-labels = pd.read_csv("fair_ages.csv",header=0)
+labels = pd.read_csv("labels2.csv",header=0)
 
 # construir un DF con las caracteristicas y etiquetas
 datos=pd.DataFrame(Lbp)
@@ -133,7 +126,7 @@ print(nan_rows)
 
 # # # Guardar características y etiquetas en un csv
 print("Guardando características...")
-datos.to_csv('fair_face/LBP_96_8.csv',index=False)
+datos.to_csv('LBP.csv',index=False)
 
 # imprimir última imagen
 

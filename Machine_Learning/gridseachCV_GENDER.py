@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np                                             
 
 #----DATA--------#
-data= pd.read_csv("fair_face/HOG_8x8_fair.csv",header=0)
+data= pd.read_csv(" ",header=0)
 
 #----------------------------
 # caracteristicas
@@ -18,8 +18,12 @@ data= pd.read_csv("fair_face/HOG_8x8_fair.csv",header=0)
 X= data
 # etiquetas
 
-labels= pd.read_csv("fair_face_labels.csv",header=0)
+labels= pd.read_csv(" ",header=0)
 
+
+# Usar label encoder en caso que la etiqueta no esté codificada
+# esto fue para probar el fair_face dataset, utk face dataset 
+# ya viene codificado
 
 from sklearn import preprocessing
 le = preprocessing.LabelEncoder()
@@ -71,6 +75,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2,random_s
 ##-------Parámetros para el entrenamiento----#
 
 # Validación cruzada de 5 carpetas
+# usar una semilla para reproductividad
 cv=StratifiedKFold(5, shuffle=True, random_state=200)
 
 
@@ -91,7 +96,7 @@ k=int(len(X[1])/4) # número de características escogido para aproxar el kernel
 #Ny = Nystroem(kernel='rbf',random_state=1,n_components=k)
 
 #----Definir el papeline a evaluar-------------#
-# feature extraction + kernel aproximation + training
+# feature extraction + transformador  + training
 pipeline = Pipeline(steps=[('anova',fs),
                            ('transformer',PowerTransformer()),
                           # ('nystroem',Ny), 

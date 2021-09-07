@@ -16,19 +16,12 @@ import pandas as pd
 
 
 # # Importar las caracteristicas y dejar solo el genero como etiqueta en el último csv a unir
-datos1=pd.read_csv("fair_face/HOG_8x8_fair.csv",header=0)
+datos1=pd.read_csv(" ",header=0)
 #datos1=datos1.drop(columns=['genero','edad','raza'])
 
-datos2=pd.read_csv("fair_face/LBP_96_fair.csv",header=0)
+datos2=pd.read_csv(" ",header=0)
 #datos2=datos2.drop(columns=['edad','raza'])
 
-#datos3=pd.read_csv("/content/drive/MyDrive/Data_tesis/HOG_lfw_8_96x96.csv",header=0)
-# datos3=datos3.drop(columns=['genero'])
-
-# datos4=pd.read_csv("lfw_dataset/LBP_particiones_6.csv",header=0)
-# datos4=datos4.drop(columns=['genero'])
-
-# datos5=pd.read_csv("lfw_dataset/LBP_particiones_8.csv",header=0)
 
 data=pd.concat([datos1,datos2], axis=1, ignore_index=True)
 
